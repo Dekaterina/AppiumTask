@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.1.1' // обратите внимание на номер версии
+        classpath 'com.android.tools.build:gradle:8.1.1' // актуальная версия Android Gradle Plugin
     }
 }
 
@@ -17,11 +17,11 @@ plugins {
 android {
     compileSdkVersion 34                     // Современная версия Android SDK
     defaultConfig {
-        applicationId "com.example.sample"   // Ваше приложение называется "sample"
-        minSdkVersion 24                     // Минимальная поддерживаемая версия Android (API 24)
-        targetSdkVersion 34                  // Текущая цель для современных устройств
-        versionCode 1                         // Начальная версия
-        versionName "1.0"                    // Первая версия приложения
+        applicationId "ru.netology.testing.uiautomator"   // Важно совпадение с пакетом
+        minSdkVersion 24                     // Минимальная поддерживаемая версия Android
+        targetSdkVersion 34                  // Современные рекомендации
+        versionCode 1                         // Версия приложения
+        versionName "1.0"                    // Название версии
     }
     buildTypes {
         release {
@@ -36,7 +36,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'               // Поддерживает компоненты Material Design
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // Управление макетом
-    testImplementation 'junit:junit:4.13.2'                         // Юнит-тестирование с помощью библиотеки JUnit
+    implementation 'androidx.appcompat:appcompat:1.6.1'               // Совместимость
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // Layout-менеджеры
+    testImplementation 'junit:junit:4.13.2'                         // Юнит-тестирование
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1' // Espresso для UI-тестов
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'      // Test Rules
+    androidTestImplementation 'androidx.test:rules:1.5.0'          // Testing rules
+    androidTestImplementation 'androidx.test:runner:1.5.2'         // Тестовый runner
 }
