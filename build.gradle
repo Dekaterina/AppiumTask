@@ -1,65 +1,42 @@
 buildscript {
     repositories {
-        google() // Важно добавить репозиторий Google Maven
+        google()
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2' // Используйте актуальную версию плагина
+        classpath 'com.android.tools.build:gradle:8.1.1' // обратите внимание на номер версии
     }
 }
 
 plugins {
-    id 'com.android.application' // Здесь объявляется плагин
+    id 'com.android.application'
     id 'java'
     id 'application'
 }
 
-android { // Блок конфигурации Android
-    compileSdkVersion 33 // Укажите нужную версию SDK
+android {
+    compileSdkVersion 34                     // Современная версия Android SDK
     defaultConfig {
-        minSdkVersion 21 // Минимальная поддерживаемая версия API
-        targetSdkVersion 33 // Целевая версия API
-        versionCode 1
-        versionName "1.0"
+        applicationId "com.example.sample"   // Ваше приложение называется "sample"
+        minSdkVersion 24                     // Минимальная поддерживаемая версия Android (API 24)
+        targetSdkVersion 34                  // Текущая цель для современных устройств
+        versionCode 1                         // Начальная версия
+        versionName "1.0"                    // Первая версия приложения
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
-    namespace 'your.package.namespace' // Ваш пакет Java/Kotlin
 }
-
-group 'org.example'
-version '1.0-SNAPSHOT'
-mainClassName = 'your.main.class.name'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-
-    implementation 'io.appium:java-client:8.5.1'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-tasks.named('test') {
-    maxHeapSize = '1G'
-}
-
-jar {
-    manifest {
-        attributes(
-                'Main-Class': "$mainClassName",
-                'Implementation-Title': project.name,
-                'Implementation-Version': project.version
-        )
-    }
+    implementation 'androidx.appcompat:appcompat:1.6.1'               // Поддерживает компоненты Material Design
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4' // Управление макетом
+    testImplementation 'junit:junit:4.13.2'                         // Юнит-тестирование с помощью библиотеки JUnit
 }
