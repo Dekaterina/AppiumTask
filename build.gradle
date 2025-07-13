@@ -1,11 +1,40 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.4.2' // Используйте последнюю версию плагина gradle plugin
+    }
+}
+
 plugins {
+    id 'com.android.application' // Включаем плагин Android application
     id 'java'
     id 'application'
+}
+
+android { // Блок конфигурации Android
+    compileSdkVersion 33 // Укажите нужную версию SDK
+    defaultConfig {
+        minSdkVersion 21 // Минимальная поддерживаемая версия API
+        targetSdkVersion 33 // Целевая версия API
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    namespace 'your.package.namespace' // Ваш пакет Java/Kotlin
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 mainClassName = 'your.main.class.name'
+
 repositories {
     mavenCentral()
 }
@@ -14,7 +43,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 
-        implementation 'io.appium:java-client:8.5.1'
+    implementation 'io.appium:java-client:8.5.1'
 }
 
 test {
