@@ -1,15 +1,15 @@
 buildscript {
     repositories {
-        google()
+        google() // Важно добавить репозиторий Google Maven
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2' // Используйте последнюю версию плагина gradle plugin
+        classpath 'com.android.tools.build:gradle:7.4.2' // Используйте актуальную версию плагина
     }
 }
 
 plugins {
-    id 'com.android.application' // Включаем плагин Android application
+    id 'com.android.application' // Здесь объявляется плагин
     id 'java'
     id 'application'
 }
